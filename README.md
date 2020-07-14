@@ -33,8 +33,10 @@ setreadonly(mt, true); -- makes the table read-only again
 ***Metamethods***
 
 So what are metamethods and how can we use them to our advantage? A metamethod is essentially an event that runs whenever the properties of the table change. They are called using a __ prefix. A list of metamethods is as follows :
-* ***__namecall***
-The __namecall metamethod is used to grab all the methods from a metatable. Methods are built-in functions that are called using colons. Some examples of this are `:Kick()`, `:FireServer()` etc... Here is a basic example of how `__namecall` is used :
+```diff
+> __namecall
+```
+The `__namecall` metamethod is used to grab all the methods from a metatable. Methods are built-in functions that are called using colons. Some examples of this are `:Kick()`, `:FireServer()` etc... Here is a basic example of how `__namecall` is used :
 ```lua
 local mt = getrawmetatable(game);
 local oldMT = mt.__namecall; -- we're using the __namecall metamethod to backup our current table. We'll need this in the future.
@@ -96,7 +98,9 @@ The output will looks something like this :
 In the anti-kick script above I used `self` as an argument simply for the sake of simplicity & also to indicate that userdata is returned as an object, and that to get the full path we can use `GetFullName()`. Now that we know how the arguments are indexed we can entirely avoid using self. Assuming that we're still using the args table, we can just grab the `self` argument by indexing it as `args[1]`.
 
 The next metamethod we'll be reviewing is :
-* ***__index***
+```diff
+> __index
+```
 
 
 
